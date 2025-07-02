@@ -1,0 +1,113 @@
+body {
+    background: #f4f6f8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.center-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    text-align: left;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2d3a4b;
+}
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.98rem;
+}
+.tickets-table th, .tickets-table td {
+    border: 1px solid #e0e0e0;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+.tickets-table th {
+    background: #f8fafc;
+    color: #2d3a4b;
+    font-weight: 600;
+}
+.tickets-table tr:nth-child(even) {
+    background: #f4f6f8;
+}
+.estado {
+    display: inline-block;
+    padding: 0.2em 0.8em;
+    border-radius: 12px;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #fff;
+}
+.estado.abierto {
+    background: #28a745;
+}
+.estado.enprogreso {
+    background: #ffc107;
+    color: #222;
+}
+.estado.cerrado {
+    background: #dc3545;
+}
+.btn-admin {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.btn-admin:hover {
+    background: #495057;
+}
+
+.btn-pdf {
+    background: #dc3545;
+    color: #fff;
+    padding: 0.4em 1em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 0.5em;
+}
+.btn-pdf:hover {
+    background: #a71d2a;
+}
+.btn-excel {
+    background: #28a745;
+    color: #fff;
+    padding: 0.6em 1.5em;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-excel:hover {
+    background: #218838;
+    box-shadow: 0 4px 16px rgba(40,167,69,0.15);
+    color: #fff;
+    text-decoration: none;
+}

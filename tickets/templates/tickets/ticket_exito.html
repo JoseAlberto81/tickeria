@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Enviado</title>
+    <link rel="stylesheet" href="{% static 'tickets/style.css' %}">
+</head>
+<body>
+    <div class="center-container">
+        <div class="card">
+            <h2>¡Ticket enviado!</h2>
+            <p>Tu solicitud ha sido registrada correctamente.</p>
+            <a href="{% url 'home' %}" class="btn-main">Volver al inicio</a>
+            {% if ticket_id %}
+    <a href="{% url 'ticket_pdf' ticket_id=ticket_id %}" class="btn-main">Descargar PDF</a>
+{% endif %}
+        </div>
+    </div>
+</body>
+</html>

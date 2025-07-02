@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Ticket</title>
+    <link rel="stylesheet" href="{% static 'tickets/style_admin.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+<script src="{% static 'tickets/js/firma.js' %}"></script>    <style>
+        #firma-canvas { border: 1px solid #ccc; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<div class="center-container">
+    <div class="card" style="max-width:600px;">
+        <h2>Detalle del Ticket</h2>
+        <p><b>ID:</b> {{ ticket.id }}</p>
+        <p><b>Solicitante:</b> {{ ticket.solicitante }}</p>
+        <p><b>Email:</b> {{ ticket.email }}</p>
+        <p><b>Título:</b> {{ ticket.titulo }}</p>
+        <p><b>Descripción:</b> {{ ticket.descripcion }}</p>
+        <p><b>Estado:</b> {{ ticket.estado }}</p>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <label>Respuesta:</label>
+            <textarea name="respuesta" rows="3" style="width:100%;" required>{{ ticket.respuesta }}</textarea>
+            <br><br>
+            <label>Firma del solicitante:</label><br>
+            <canvas id="firma-canvas" width="400" height="120"></canvas><br>
+            <button type="button" onclick="limpiarFirma()">Limpiar firma</button>
+            <input type="hidden" name="firma_data" id="firma_data">
+            <br><br>
+            <button type="submit" class="btn-admin" onclick="guardarFirma()">Marcar como resuelto y guardar firma</button>
+        </form>
+        <br>
+        <a href="{% url 'admin_dashboard' %}" class="btn-admin">Volver</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Administrador</title>
+    <link rel="stylesheet" href="{% static 'tickets/style.css' %}">
+</head>
+<body>
+    <div class="center-container">
+        <div class="card">
+            <h2>Login Ingeniero/Administrador</h2>
+            {% if mensaje %}
+                <p style="color:red;">{{ mensaje }}</p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuario" required class="form-control"><br>
+                <input type="password" name="password" placeholder="Contraseña" required class="form-control"><br>
+                <button type="submit" class="btn-admin">Ingresar</button>
+            </form>
+            <a href="{% url 'home' %}">Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html>

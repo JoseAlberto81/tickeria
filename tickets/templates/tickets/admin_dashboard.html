@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Tickets</title>
+    <link rel="stylesheet" href="{% static 'tickets/style_admin.css' %}">
+</head>
+<body>
+    <div class="center-container">
+        <div class="card" style="max-width:1200px;">
+            <h2>Tickets registrados</h2>
+
+            <form method="get" action="{% url 'exportar_excel_mes' %}" style="display:inline; margin-bottom: 1.5rem;">
+                <label for="mes">Mes:</label>
+                <input type="month" name="mes" id="mes" required>
+                <button type="submit" class="btn-excel">Exportar Mes</button>
+
+            <table class="tickets-table">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Solicitante</th>
+                        <th>Correo electrónico</th>
+                        <th>Asignado</th>
+                        <th>Fecha esperada</th>
+                        <th>Prioridad</th>
+                        <th>Etiqueta</th>
+                        <th>Creado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>
+                        <span class="estado {{ ticket.estado|lower|cut:' ' }}">{{ ticket.estado }}</span>
+                    </td>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.titulo }}</td>
+                    <td>{{ ticket.solicitante }}</td>
+                    <td>{{ ticket.email }}</td>
+                    <td>{{ ticket.asignado }}</td>
+                    <td>{{ ticket.fecha_esperada|date:"d/m/Y" }}</td>
+                    <td>{{ ticket.prioridad }}</td>
+                    <td>{{ ticket.etiqueta }}</td>
+                    <td>{{ ticket.creado|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        <a href="{% url 'ticket_pdf' ticket.id %}" class="btn-pdf" target="_blank">PDF</a>
+                        <a href="{% url 'ticket_detalle' ticket.id %}" class="btn-admin">Ver/Responder</a>
+                        
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="11">No hay tickets registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            <a href="{% url 'home' %}" class="btn-admin">Volver al inicio</a>
+            <a href="{% url 'exportar_excel_todos' %}" class="btn-excel">Exccel</a>
+            
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Ticket</title>
+    <link rel="stylesheet" href="{% static 'tickets/style_ticket.css' %}">
+</head>
+<body>
+    <div class="center-container">
+        <div class="card" style="max-width:700px;">
+            <h2>Nuevo ticket</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="display:flex; gap:2rem;">
+                    <div style="flex:1;">
+                        <label>Solicitante *</label>
+                        {{ form.solicitante }}
+                        <label>Email *</label>
+                        {{ form.email }}
+                        <label>Título *</label>
+                        {{ form.titulo }}
+                        <label>Descripción</label>
+                        {{ form.descripcion }}
+                    </div>
+                    <div style="flex:1;">
+                        <label>Fecha esperada</label>
+                        {{ form.fecha_esperada }}
+                        <label>Prioridad</label>
+                        {{ form.prioridad }}
+                        <label>Adjunto</label>
+                        {{ form.archivo }}
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem;">
+                    <button type="submit" class="btn-main">Enviar</button>
+                    <a href="{% url 'home' %}" class="btn-admin">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

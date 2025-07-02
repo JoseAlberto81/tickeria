@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal - Ticketera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'tickets/style.css' %}">
+</head>
+<body>
+    <div class="center-container">
+        <div class="card">
+            <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Ticketera">
+            <h2>Ticketera</h2>
+            <p>Gestión de tickets</p>
+            <button class="btn-main" onclick="window.location.href='{% url 'crear_ticket' %}'">Ingresar como Usuario</button>
+            <button class="btn-admin" onclick="window.location.href='{% url 'admin_login' %}'">Ingresar como Administrador</button>
+        </div>
+        <footer>
+            &copy; {{ year|default:"2025" }} Ticketera. Todos los derechos reservados.
+        </footer>
+    </div>
+</body>
+</html>
